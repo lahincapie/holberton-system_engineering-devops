@@ -1,0 +1,1 @@
+Este script ejecuta la instruccion de la ruta actual
