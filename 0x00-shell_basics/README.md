@@ -1,1 +1,1 @@
-Este script ejecuta la instruccion de la ruta actual
+0x01. Shell, permissions
