@@ -1,3 +1,7 @@
+# 0x01. Shell, permissions
+## Foundations > System engineering & DevOps > Bash
+
+chmod u+x file
 ### Tasks
 
 
@@ -403,7 +407,7 @@ julien@ubuntu:/tmp/h$
 
 ```shell
 #!/bin/bash
-chmod -R ugo+X
+chmod -R ugo+x
 
 ```
 
