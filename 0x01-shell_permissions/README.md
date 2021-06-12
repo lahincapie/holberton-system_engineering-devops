@@ -7,8 +7,10 @@
 #### 0. My name is Betty
 Create a script that switches the current user to the user betty.
 
+
 - You should use exactly 8 characters for your command (+1 character for the new line)
 - You can assume that the user betty will exist when we will run your script
+
 
 ```shell
 julien@ubuntu:/tmp/h$ tail -1 0-iam_betty | wc -c
@@ -16,29 +18,55 @@ julien@ubuntu:/tmp/h$ tail -1 0-iam_betty | wc -c
 julien@ubuntu:/tmp/h$
 
 ```
+
 **Repo:**
 
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 0-iam_betty
 
+##### answer
+
+```shell
+#!/bin/bash
+su betty
+
+```
+
+su -- substitute user identity
+
+The su utility requests appropriate user credentials via PAM and switches to that user ID (the default user is the superuser).  A shell is then executed.
+
 ------------
 
 
 #### 1. Who am I
 Write a script that prints the effective username of the current user.
+
 ```shell
 julien@ubuntu:/tmp/h$ ./1-who_am_i
 julien
 julien@ubuntu:/tmp/h$
 
 ```
+
 **Repo**:
 
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 1-who_am_i
 
+
+##### answer
+
+```shell
+#!/bin/bash
+id -un
+
+```
+ id -- return user identity
+
+The historic whoami(1) command is equivalent to ``id -un''.
 
 ------------
 
@@ -59,6 +87,15 @@ Note: depending on the user, you will get a different output.
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 2-groups
+
+##### answer
+
+```shell
+#!/bin/bash
+id -Gn
+
+```
+The historic groups(1) command is equivalent to ``id -Gn [user]''
 
 ------------
 
@@ -85,6 +122,16 @@ julien@ubuntu:/tmp/h$
 - Directory: 0x01-shell_permissions
 - File: 3-new_owner
 
+##### answer
+
+```shell
+#!/bin/bash
+chown betty hello
+
+```
+chown -- change file owner and group
+The chown utility changes the user ID and/or the group ID of the specified files.  Symbolic links named by arguments are silently left unchanged unless -h is used.
+
 ------------
 
 
@@ -96,6 +143,16 @@ Write a script that creates an empty file called hello.
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 4-empty
+
+##### answer
+
+```shell
+#!/bin/bash
+touch hello
+
+```
+touch -- change file access and modification times
+The touch utility sets the modification and access times of files.  If any file does not exist, it is created with default permissions.
 
 ------------
 
@@ -125,6 +182,18 @@ julien@ubuntu:/tmp/h$
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 5-execute
+
+##### answer
+
+```shell
+#!/bin/bash
+chmod u+x hello
+
+```
+chmod -- change file modes or Access Control Lists
+u = The user permission bits in the original mode of the file.
+x = The execute/search bits.
++ = If no value is supplied for perm, the "+'' operation has no effect.  If no value is supplied for who, each permission bit specified in perm, for which the corresponding bit in the file mode creation mask (see umask(2)) is clear, is set.  Otherwise, the mode bits represented by the specified who and perm values are set
 ------------
 
 
@@ -151,6 +220,17 @@ julien@ubuntu:/tmp/h$
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 6-multiple_permissions
+
+##### answer
+
+```shell
+#!/bin/bash
+chmod u+x,g+x,o+r hello
+
+```
+r = The read bits.
+g = The group permission bits in the original mode of the file.
+o = The other permission bits in the original mode of the file.
 
 ------------
 
@@ -179,6 +259,14 @@ julien@ubuntu:/tmp/h$
 GitHub repository: holberton-system_engineering-devops
 Directory: 0x01-shell_permissions
 File: 7-everybody
+
+##### answer
+
+```shell
+#!/bin/bash
+chmod ugo+x hello
+
+```
 
 ------------
 
@@ -209,6 +297,14 @@ GitHub repository: holberton-system_engineering-devops
 Directory: 0x01-shell_permissions
 File: 8-James_Bond
 
+##### answer
+
+```shell
+#!/bin/bash
+chmod 007 hello
+
+```
+
 ------------
 
 
@@ -225,6 +321,14 @@ Write a script that sets the mode of the file hello to this:
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 9-John_Doe
+
+##### answer
+
+```shell
+#!/bin/bash
+chmod 753 hello
+
+```
 
 ------------
 
@@ -256,6 +360,15 @@ Note: the mode of olleh will not always be 664. Make sure your script works for 
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 10-mirror_permissions
+
+##### answer
+
+```shell
+#!/bin/bash
+chmod --reference=olleh hello
+
+```
+
 ------------
 
 
@@ -285,6 +398,15 @@ julien@ubuntu:/tmp/h$
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 11-directories_permissions
+
+##### answer
+
+```shell
+#!/bin/bash
+chmod -R ugo+X
+
+```
+
 ------------
 
 
@@ -316,6 +438,14 @@ julien@ubuntu:/tmp/h$
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 12-directory_permissions
+
+##### answer
+
+```shell
+#!/bin/bash
+mkdir -m 751 dir_holberton
+
+```
 
 ------------
 
@@ -351,6 +481,14 @@ julien@ubuntu:/tmp/h$
 - Directory: 0x01-shell_permissions
 - File: 13-change_group
 
+##### answer
+
+```shell
+#!/bin/bash
+chgrp holberton hello
+
+```
+
 ------------
 
 
@@ -384,6 +522,14 @@ julien@ubuntu:/tmp/h$
 - Directory: 0x01-shell_permissions
 - File: 100-change_owner_and_group
 
+##### answer
+
+```shell
+#!/bin/bash
+chown -Rh betty:holberton
+
+```
+
 ------------
 
 
@@ -412,6 +558,15 @@ julien@ubuntu:/tmp/h$
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 101-symbolic_link_permissions
+
+##### answer
+
+```shell
+#!/bin/bash
+chown -h betty:holberton _hello
+
+```
+
 ------------
 
 
@@ -437,6 +592,15 @@ julien@ubuntu:/tmp/h$
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 102-if_only
+
+##### answer
+
+```shell
+#!/bin/bash
+chown --from=guillaume betty hello
+
+```
+
 ------------
 
 
@@ -448,6 +612,14 @@ Write a script that will play the StarWars IV episode in the terminal.
 - GitHub repository: holberton-system_engineering-devops
 - Directory: 0x01-shell_permissions
 - File: 103-Star_Wars
+
+##### answer
+
+```shell
+#!/bin/bash
+telnet towel.blinkenlights.nl
+
+```
 
 ------------
 
