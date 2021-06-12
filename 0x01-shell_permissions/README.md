@@ -530,7 +530,7 @@ julien@ubuntu:/tmp/h$
 
 ```shell
 #!/bin/bash
-chown -Rh betty:holberton
+chown -R betty:holberton
 
 ```
 
