@@ -6,7 +6,7 @@
 # a password. Share your SSH client
 #configuration in your answer file.
 
-Host ubuntu@35.231.150.24
-     HostName 35.231.150.24
+Host ubuntu@34.73.255.122
+     HostName 34.73.255.122
      User ubuntu
      IdentityFile ~/.ssh/school
