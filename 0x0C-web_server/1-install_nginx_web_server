@@ -11,7 +11,8 @@
 # will be run on the server itself)
 # You can’t use systemctl for restarting nginx
 
-apt-get -y update
+apt-get update -y
+apt-get upgrade -y
 apt-get -y install nginx
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-service nginx start
+service nginx reload
