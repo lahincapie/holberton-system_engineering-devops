@@ -12,7 +12,6 @@
 # You can’t use systemctl for restarting nginx
 
 apt-get update -y
-apt-get upgrade -y
 apt-get -y install nginx
-echo "Hello World" > /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 service nginx reload
