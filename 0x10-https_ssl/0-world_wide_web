@@ -10,3 +10,4 @@ else
 	    	  dig "$index.$1" | grep -A1 'ANSWER SECTION:' | grep -v 'ANSWER' | awk -v subd="$index" '{print "The subdomain "subd" is a "$4" record and points to "$5}'
  	done
 fi
+
