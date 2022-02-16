@@ -10,15 +10,17 @@ import requests
 def top_ten(subreddit):
     '''function to check top then of sub.'''
 
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    user_Agent = 'linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)'
-
-    headers = {'User-Agent': user_Agent}
-
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code != 200:
-        print(None)
-        return
-    response_data = response.json()
-    for data in (response_data['data']['children'])[:10]:
-        print(data['data']['title'])
+    URL = 'https://www.reddit.com/r/' + subreddit + '/hot.json'
+    params = {'limit': 10}
+    headers = {'User-agent': 'My User Agent 2.0'}
+    try:
+        req = requests.get(URL,
+                           headers=headers,
+                           params=params,
+                           allow_redirects=False).json()
+        data = req['data']['children']
+        for listing in data:
+            title = listing.get('data').get('title')
+            print(title)
+    except Exception:
+        print('None')
