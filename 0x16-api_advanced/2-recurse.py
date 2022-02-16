@@ -1,19 +1,24 @@
 #!/usr/bin/python3
-'''python script'''
+"""queries the Reddit API and returns a list containing
+the titles of all hot articles for a given subreddit
+"""
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None):
-    '''function to check nbre of sub'''
-    requestpost = requests.get("https://www.reddit.com/r/{}/hot.json".format(
-        subreddit), headers={"User-Agent": "My User Agent"}, params={"after": after})
-    if requestpost.status_code != 200:
-        return(None)
-    request_data = requestpost.json()
-    st = request_data["data"]["after"]
-    child = request_data["data"]["children"]
-    for c in child:
-        hot_list.append(c["data"]["title"])
-    if st is not None:
-        recurse(subreddit, hot_list, st)
-    return(hot_list)
+sesion = requests.Session()
+sesion.headers.update({'User-agent': 'My User Agent'})
+sesion.allow_redirects = False
+
+
+def recurse(subreddit, hot_list=[]):
+    URL = "https://www.reddit.com/r/" + subreddit + "/hot.json"
+    req = sesion.get(URL).json()
+    try:
+        for i in req['data']['children']:
+            hot_list.append(i['data']['title'])
+        if req['data']['after']:
+            sesion.params = {'after': req['data']['after']}
+            return recurse(subreddit, hot_list)
+        return hot_list
+    except Exception:
+        return None
