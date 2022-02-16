@@ -4,18 +4,19 @@ import json
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def recurse(subreddit, hot_list=[]):
     '''returns a list containing the titles of all hot articles'''
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     user_Agent = 'linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)'
-
     headers = {
         "User-Agent": user_Agent
     }
-
-    response = requests.get(url, headers=headers, params={"after": after}, allow_redirects=False)
-
+    params = {
+        'after': after
+    }
+    response = requests.get(url, headers=headers,
+                            params=params, allow_redirects=False)
     if response.status_code != 200:
         return(None)
     request_data = response.json()
