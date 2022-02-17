@@ -1,5 +1,3 @@
-# Untitled
-
 # **0x17. Web stack debugging #3**
 
 - By Sylvain Kalache, co-founder at Holberton School
@@ -54,9 +52,6 @@ $ gem install puppet-lint -v 2.1.1
 
 ### **0. Strace is your friend**
 
-**mandatory**
-
-![https://holbertonintranet.s3.amazonaws.com/uploads/medias/2019/6/f5af5167e65bd3101f76.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20220217%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220217T012529Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=9d2b4810df48aa66ec9878ac45ff4a964a55843e0e8759aae47ee8df39f68ae4](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2019/6/f5af5167e65bd3101f76.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20220217%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220217T012529Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=9d2b4810df48aa66ec9878ac45ff4a964a55843e0e8759aae47ee8df39f68ae4)
 
 Using `strace`, find out why Apache is returning a 500 error. Once you find the issue, fix it and then automate it using Puppet (instead of using Bash as you were previously doing).
 
