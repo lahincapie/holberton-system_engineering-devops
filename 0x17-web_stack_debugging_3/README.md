@@ -1,11 +1,5 @@
 # **0x17. Web stack debugging #3**
 
-- By Sylvain Kalache, co-founder at Holberton School
-- Weight: 1
-- Ongoing project - started 02-15-2022, must end by 02-17-2022 (in about 4 hours) - you're done with 0% of tasks.
-- Checker was released at 02-16-2022 07:12 AM
-- An auto review will be launched at the deadline
-
 # **Concepts**
 
 *For this project, students are expected to look at these concepts:*
